@@ -58,6 +58,7 @@ import {
   FileJson,
   Wrench,
   Cpu,
+  Bolt,
 } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -454,126 +455,140 @@ export default function Home() {
   // ---------------------------------------------------------------------------
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50">
       {/* ===== HERO HEADER ===== */}
-      <header className="relative overflow-hidden border-b border-zinc-800">
+      <header className="relative overflow-hidden bg-gradient-to-b from-slate-900/80 to-slate-950/50 border-b border-emerald-500/10 backdrop-blur-sm">
         {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-950 via-emerald-950/20 to-teal-950/30" />
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/3 right-0 w-80 h-80 bg-teal-500/15 rounded-full blur-3xl" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
-            <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <Zap className="h-6 w-6 text-white" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-center gap-4 flex-1">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400 flex items-center justify-center shadow-xl shadow-emerald-500/30 flex-shrink-0">
+                  <Zap className="h-8 w-8 text-slate-950 font-bold" />
+                </div>
+                <div className="flex-1">
+                  <h1 className="text-4xl sm:text-5xl font-bold tracking-tighter bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
+                    AppForge
+                  </h1>
+                  <p className="text-sm text-emerald-300/80 font-semibold mt-1">LLM Application Compiler</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
-                  AppForge
-                </h1>
-                <p className="text-sm text-zinc-400 font-medium">Production-Grade LLM Application Compiler</p>
+              <div className="flex flex-wrap gap-2 justify-start sm:justify-end">
+                <Badge className="bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/40 text-emerald-200 text-xs font-semibold px-3 py-1">
+                  <Sparkles className="h-3 w-3 mr-1.5" /> v2.0
+                </Badge>
+                <Badge className="bg-slate-800/60 border border-slate-700/60 text-slate-300 text-xs font-semibold px-3 py-1">
+                  <Bolt className="h-3 w-3 mr-1.5" /> 6 Stages
+                </Badge>
               </div>
             </div>
-            <div className="sm:ml-auto flex items-center gap-2">
-              <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 text-xs">
-                <Sparkles className="h-3 w-3 mr-1" /> v2.0
-              </Badge>
-              <Badge variant="outline" className="border-zinc-700 text-zinc-400 text-xs">
-                6-Stage Pipeline
-              </Badge>
-            </div>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+              Transform natural language product descriptions into <span className="font-semibold text-emerald-300">production-ready</span> application schemas. Our deterministic 6-stage compiler pipeline ensures consistent, validated output.
+            </p>
           </div>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-3xl leading-relaxed">
-            Transforms natural language product descriptions into production-ready application schemas through
-            a deterministic 6-stage compiler pipeline: <span className="text-emerald-400/80">Intent Extraction</span> →{' '}
-            <span className="text-teal-400/80">Architecture Planning</span> →{' '}
-            <span className="text-cyan-400/80">Schema Generation</span> →{' '}
-            <span className="text-amber-400/80">Validation</span> →{' '}
-            <span className="text-orange-400/80">Repair</span> →{' '}
-            <span className="text-emerald-400/80">Simulation</span>.
-          </p>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* ===== INPUT PANEL ===== */}
-        <Card className="bg-zinc-900 border-zinc-800">
-          <CardHeader className="pb-4">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Terminal className="h-5 w-5 text-emerald-400" />
-              Product Prompt
-            </CardTitle>
-            <CardDescription className="text-zinc-500">
-              Describe the application you want to compile. The more detail, the better the output.
-            </CardDescription>
+        <Card className="relative bg-gradient-to-br from-slate-800/40 to-slate-900/60 border border-emerald-500/20 shadow-2xl shadow-emerald-500/10 overflow-hidden">
+          {/* Gradient line at top */}
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0" />
+          
+          <CardHeader className="pb-6 bg-gradient-to-r from-slate-800/30 to-transparent">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <CardTitle className="flex items-center gap-3 text-2xl font-bold">
+                  <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                    <Sparkles className="h-5 w-5 text-white" />
+                  </div>
+                  Describe Your Application
+                </CardTitle>
+                <CardDescription className="text-slate-400 mt-2">
+                  Enter a natural language description and let our AI compiler generate production-ready schemas
+                </CardDescription>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe your application..."
-              className="min-h-[120px] bg-zinc-950 border-zinc-800 text-zinc-100 placeholder:text-zinc-600 focus-visible:ring-emerald-500/50 focus-visible:border-emerald-500/50 resize-y font-mono text-sm"
-            />
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+
+          <CardContent className="space-y-5">
+            <div className="relative">
+              <Textarea
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder="e.g., Build a SaaS CRM with user authentication, contact management, dashboard with analytics, role-based access control, and Stripe subscription billing..."
+                className="min-h-[140px] bg-slate-950/60 border border-slate-700/50 text-slate-100 placeholder:text-slate-500 focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:border-emerald-500/50 resize-y font-mono text-sm rounded-lg backdrop-blur-sm"
+              />
+              <div className="absolute bottom-3 right-3 text-xs text-slate-500">
+                {prompt.length} characters
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Button
                 onClick={handleCompile}
                 disabled={isCompiling || !prompt.trim()}
-                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/20 gap-2 px-6"
+                className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-semibold shadow-lg shadow-emerald-500/30 gap-2 px-8 py-6 sm:py-2 text-base sm:text-sm transition-all duration-200 hover:shadow-emerald-500/50 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isCompiling ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-5 w-5 animate-spin" />
                     Compiling...
                   </>
                 ) : (
                   <>
-                    <Play className="h-4 w-4" />
-                    Compile
+                    <Zap className="h-5 w-5" />
+                    Compile Now
                   </>
                 )}
               </Button>
 
               {/* Advanced Options Toggle */}
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 onClick={() => setShowAdvanced(!showAdvanced)}
-                className="text-zinc-400 hover:text-zinc-200 gap-1"
+                className="border-slate-700/60 text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 backdrop-blur-sm gap-2"
               >
                 <Settings className="h-4 w-4" />
-                Advanced
+                Advanced Options
                 {showAdvanced ? <ChevronDown className="h-3 w-3" /> : <ChevronRight className="h-3 w-3" />}
               </Button>
-            </div>
+
+                <div className="hidden sm:block flex-1" />
+              </div>
 
             {/* Advanced Options */}
             {showAdvanced && (
-              <div className="mt-3 p-4 bg-zinc-950 rounded-lg border border-zinc-800 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="mt-3 p-4 bg-slate-950/50 rounded-lg border border-slate-700/30 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-sm font-medium text-zinc-300">Skip Repair</p>
-                      <p className="text-xs text-zinc-500">Disable auto-repair stage</p>
+                        <p className="text-sm font-medium text-slate-300">Skip Repair</p>
+                        <p className="text-xs text-slate-500">Disable auto-repair stage</p>
                     </div>
                     <Switch checked={skipRepair} onCheckedChange={setSkipRepair} />
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="text-sm font-medium text-zinc-300">Skip Validation</p>
-                      <p className="text-xs text-zinc-500">Disable cross-layer validation</p>
+                        <p className="text-sm font-medium text-slate-300">Skip Validation</p>
+                        <p className="text-xs text-slate-500">Disable cross-layer validation</p>
                     </div>
                     <Switch checked={skipValidation} onCheckedChange={setSkipValidation} />
                   </div>
                   <div className="space-y-1.5">
-                    <p className="text-sm font-medium text-zinc-300">Max Repair Cycles</p>
+                      <p className="text-sm font-medium text-slate-300">Max Repair Cycles</p>
                     <Select value={maxRepairCycles} onValueChange={setMaxRepairCycles}>
-                      <SelectTrigger className="bg-zinc-900 border-zinc-800 text-zinc-200 h-9">
+                        <SelectTrigger className="bg-slate-950/50 border-slate-700/30 text-slate-200 h-9">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className="bg-zinc-900 border-zinc-800">
+                        <SelectContent className="bg-slate-900 border-slate-800">
                         <SelectItem value="1">1</SelectItem>
                         <SelectItem value="2">2</SelectItem>
                         <SelectItem value="3">3 (Default)</SelectItem>
