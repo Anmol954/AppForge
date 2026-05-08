@@ -94,10 +94,50 @@ UI and API:
 - src/app/api/pipeline/route.ts
 - src/app/api/metrics/route.ts
 
+## Deployment to Vercel
+
+A GitHub Actions workflow is configured to automatically deploy to Vercel on every push to `main`.
+
+### Setup steps:
+
+1. **Create a GitHub repository:**
+   ```bash
+   # From project root
+   git remote add origin https://github.com/<YOUR_USERNAME>/appforge-project.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+2. **Set up Vercel project:**
+   - Visit https://vercel.com/new
+   - Import the GitHub repository
+   - Accept default Next.js settings
+   - Deploy
+
+3. **Configure GitHub Actions secrets:**
+   - Go to your GitHub repo → Settings → Secrets and variables → Actions
+   - Add three secrets:
+     - `VERCEL_TOKEN`: Get from Vercel Account Settings → Tokens
+     - `VERCEL_ORG_ID`: Format is usually your Vercel account slug
+     - `VERCEL_PROJECT_ID`: Get from Vercel project settings → General
+
+4. **Verify deployment:**
+   - Push a commit to main: `git push origin main`
+   - Watch GitHub Actions run the deployment workflow
+   - Once complete, your Live URL will be available (e.g., `https://appforge-project.vercel.app`)
+
 ## Submission package checklist
 
-- Live URL from hosted deployment (recommended)
-- GitHub repository link
-- Loom video (5-10 minutes) explaining design and tradeoffs
-- Google form submission: https://forms.gle/5mApv6YNKJPak1Ry6
+- [ ] Live URL from Vercel deployment
+- [ ] GitHub repository link
+- [ ] Loom video (5-10 minutes) explaining design and tradeoffs
+- [ ] Google form submission: https://forms.gle/5mApv6YNKJPak1Ry6
+
+### Recording your Loom video:
+
+Use the outline in [SUBMISSION_GUIDE.md](./SUBMISSION_GUIDE.md) which covers:
+- Live demo of pipeline at http://localhost:3000 or production URL
+- Quick walkthrough of the 6 pipeline stages
+- Benchmark results showing 20/20 success
+- Key design decisions: Zod contracts, deterministic generation, repair engine
 
