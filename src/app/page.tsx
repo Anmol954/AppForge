@@ -1182,7 +1182,7 @@ export default function Home() {
 
                     <Card className="bg-zinc-900 border-zinc-800">
                       <CardContent className="p-0">
-                        <ScrollArea className="max-h-[400px]">
+                        <ScrollArea className="max-h-[400px] relative z-10">
                           <Table>
                             <TableHeader>
                               <TableRow className="border-zinc-800 hover:bg-transparent">
@@ -1261,7 +1261,7 @@ export default function Home() {
             </Tabs>
 
             {/* ===== COST VS QUALITY ANALYSIS ===== */}
-            <Card className="bg-zinc-900 border-zinc-800">
+            <Card className="bg-zinc-900 border-zinc-800 mt-8 relative z-0 isolation-isolate">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <Coins className="h-5 w-5 text-emerald-400" />
